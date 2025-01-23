@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -g -g   CMakeFiles/false_belief.dir/src/field_runner.cpp.o  -o dist/false_belief src/core/libcore.a src/common/libcommon.a -ldl ../depend/enet-x86-64/.libs/libenet.a ../depend/hiredis/libhiredis.a -lpthread 

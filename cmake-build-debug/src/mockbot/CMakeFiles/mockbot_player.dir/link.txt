@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -Wall -g -g  -shared -Wl,-soname,libmockbot_player.so -o ../../dist/modules/libmockbot_player.so CMakeFiles/mockbot_player.dir/MockBotPlayer.cpp.o ../core/libcore.a ../common/libcommon.a -ldl ../../../depend/enet-x86-64/.libs/libenet.a ../../../depend/hiredis/libhiredis.a -lpthread 

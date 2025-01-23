@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -Wall -g -g  -shared -Wl,-soname,libacting.so -o ../../dist/modules/libacting.so CMakeFiles/acting.dir/Acting.cpp.o CMakeFiles/acting.dir/Skills.cpp.o ../common/libcommon.a -lpthread 
