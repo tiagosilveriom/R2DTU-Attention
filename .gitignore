@@ -1,4 +1,6 @@
 build*
 depend/*
+Debug_output*
+cmake-build-debug*
 !depend/face_recognition_model.hpp
 *.pyc
