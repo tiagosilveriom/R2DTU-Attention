@@ -1,0 +1,14 @@
+_domain domain1 {
+	_action action1 (something var1, type2 var2) {
+		_owner = name
+		_event event1 { 
+			_preconditions = ()
+			_effect_add = [add1, add2, add3]
+			_effect_delete = [del1, del2]
+
+		}
+	}
+}
+
+
+

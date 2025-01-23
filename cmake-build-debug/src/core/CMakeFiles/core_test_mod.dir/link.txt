@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -Wall -g -g  -shared -Wl,-soname,libcore_test_mod.so -o ../../dist/modules/libcore_test_mod.so CMakeFiles/core_test_mod.dir/TestMod.cpp.o libcore.a ../common/libcommon.a -lpthread -ldl ../../../depend/enet-x86-64/.libs/libenet.a ../../../depend/hiredis/libhiredis.a 

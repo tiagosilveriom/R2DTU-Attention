@@ -1,0 +1,156 @@
+[
+  {
+    "short":  "Tak for en",
+    "note": "Kør hen til Jens. 45 grader",
+    "items": [
+      ["play_wav", "../resources/s0.wav"],
+      ["animation", "animations/Novo/Talk_1"]
+    ]
+  },
+  {
+    "short":  "Hvordan har i dog",
+    "note": "Vent 2 sek",
+    "items": [
+      ["play_wav", "../resources/s1.wav"],
+      ["animation", "animations/Novo/Talk_2"]
+    ]
+  },
+  {
+    "short":  "Listen",
+    "note": "",
+    "items": [
+      ["animation", "animations/Stand/BodyTalk/Listening/Listening_2"],
+      ["animation", "animations/Stand/BodyTalk/Listening/Listening_3"]
+    ]
+  },
+  {
+    "short":  "Regnemaskiner og",
+    "note": "Vent for \"Ved du f.eks hvad jeg lærte at regne på da jeg gik i skole\"",
+    "items": [
+      ["play_wav", "../resources/s2.wav"],
+      ["animation", "animations/Novo/Talk_3"]
+    ]
+  },
+  {
+    "short":  "Listen",
+    "note": "",
+    "items": [
+      ["animation", "animations/Stand/BodyTalk/Listening/Listening_4"]
+    ]
+  },
+  {
+    "short":  "Lyder som middelalder",
+    "note": "Vent på JKB viser en regnestok til Pepper. RELEASE HEAD MOTORS",
+    "items": [
+      ["play_wav", "../resources/s3.wav"],
+      ["animation", "animations/Novo/Talk_4"]
+    ]
+  },
+  {
+    "short":  "Større del af DAPIs",
+    "note": "60 grader til Jens.",
+    "items": [
+      ["play_wav", "../resources/s4.wav"],
+      ["animation", "animations/Novo/Talk_5"]
+    ]
+  },
+  {
+    "short": "Stor hånd til Jens",
+    "note": "Kig på Jens",
+    "items": [
+      ["play_wav", "../resources/s5.wav"],
+      ["animation", "animations/Novo/Talk_6"]
+    ]
+  },
+  {
+    "short": "Clapping",
+    "note": "Release head motors",
+    "items": [
+      ["animation", "animations/Novo/Talk_12"],
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "Næste indlæg",
+    "note": "Vent færdig klap",
+    "items": [
+      ["play_wav", "../resources/s6.wav"],
+      ["animation", "animations/Novo/Talk_7"]
+    ]
+  },
+  {
+    "short":  "Steen Hasselbalch",
+    "note": "",
+    "items": [
+      ["play_wav", "../resources/s7.wav"],
+      ["animation", "animations/Novo/Talk_8"]
+    ]
+  },
+  {
+    "short":  "Velkommen til Steen",
+    "note": "Kig mod Steen",
+    "items": [
+      ["play_wav", "../resources/s8.wav"],
+      ["animation", "animations/Novo/Talk_6"]
+    ]
+  },
+  {
+    "short":  "Clapping",
+    "note": "Release head motors",
+    "items": [
+      ["animation", "animations/Novo/Talk_12"],
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "3D printet So ein Ding",
+    "note": "Drej mod Steen. Vent på \"Pepper, kan du gætte, hvad jeg står med i hånden?\"",
+    "items": [
+      ["play_wav", "../resources/s9.wav"],
+      ["animation", "animations/Novo/Talk_10"]
+    ]
+  },
+  {
+    "short":  "Listen",
+    "note": "",
+    "items": [
+      ["animation", "stand"],
+      ["animation", "animations/Stand/BodyTalk/Listening/Listening_4"],
+      ["animation", "animations/Stand/BodyTalk/Listening/Listening_5"]
+    ]
+  },
+  {
+    "short":  "Listen",
+    "note": "Vent på film starter og kør så en smule bagud",
+    "items": []
+  },
+  {
+    "short":  "I en Tesla kan alt",
+    "note": "Vent på \"Forestil jer en robotbil fra fabrikkerne til laboratoriet, der kører med prøver. Ville du kunne klare denne opgave for mig, Pepper?\"",
+    "items": [
+      ["play_wav", "../resources/s10.wav"],
+      ["animation", "animations/Novo/Talk_11"]
+    ]
+  },
+  {
+    "short":  "Listen",
+    "note": "",
+    "items": [
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "Bow",
+    "note": "Drej mod publikum, vent på at MHAL nævner Pepper",
+    "items": [
+      ["animation", "animations/Stand/Gestures/BowShort_1"],
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "Done",
+    "note": "Vink og forlad scenen",
+    "items": []
+  }
+]
+

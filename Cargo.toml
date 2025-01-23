@@ -1,0 +1,11 @@
+[workspace]
+
+members = [
+    "src/zx-naoqi",
+]
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+debug = 2

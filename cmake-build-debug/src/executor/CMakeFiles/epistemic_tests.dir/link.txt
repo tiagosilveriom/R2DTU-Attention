@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -g -g   CMakeFiles/epistemic_tests.dir/EpistemicTests.cpp.o  -o ../../dist/epistemic_tests ../../libplanner.a 

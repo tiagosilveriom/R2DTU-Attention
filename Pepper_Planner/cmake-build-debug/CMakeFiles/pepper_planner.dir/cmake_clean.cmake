@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Action.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Action_Event.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Action_Library.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Agent.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Bisimulation_Context.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Core.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/DEL_Interface.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/DEL_Operations.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Domain.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Domain_Interface_Implementation.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Environment_Loader.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/General_Action.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/General_World.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Graph.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Interface_DTO.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Main.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Misc.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Node.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Node_Comparator.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Planner.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Policy.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/State.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/Types.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Pepper_Planner/World.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Formula/Formula.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Formula/Formula_Component.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Formula/Formula_Converter.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Domain_Loader/Custom_Lexer.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Domain_Loader/Custom_Parser.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Domain_Loader/Domain_Buffer.cpp.o"
+  "CMakeFiles/pepper_planner.dir/Domain_Loader/Loader.cpp.o"
+  "pepper_planner.pdb"
+  "pepper_planner"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/pepper_planner.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

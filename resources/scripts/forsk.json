@@ -1,0 +1,54 @@
+[
+  {
+    "short":  "Greet",
+    "note": "",
+    "items": [
+      ["say", "Goddag!"],
+      ["animation", "animations/Stand/Gestures/Hey_1"],
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "Shake hand",
+    "note": "Det er en fornøjelse at møde dig",
+    "items": [
+      ["say", "Det er en fornøjelse at møde dig"],
+      ["animation", "handshake"]
+    ]
+  },
+  {
+    "short":  "Preset self 1",
+    "note": "",
+    "items": [
+      ["say", "Mit navn er Ar Tu De Ti Ju"],
+      ["animation", "animations/Stand/BodyTalk/Speaking/BodyTalk_1"]
+    ]
+  },
+  {
+    "short":  "Preset self 2",
+    "note": "",
+    "items": [
+      ["say", "Jeg arbejder som forsknings robot på DTU Compute"],
+      ["animation", "animations/Stand/BodyTalk/Speaking/BodyTalk_2"],
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "Preset self 3",
+    "note": "",
+    "items": [
+      ["say", "Vi arbejder på at give social intelligens til robotter"],
+      ["animation", "animations/Stand/BodyTalk/Speaking/BodyTalk_3"],
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "Say goodbye",
+    "note": "",
+    "items": [
+      ["say", "Jeg håber at vi ses igen!"],
+      ["animation", "animations/Stand/Gestures/BowShort_1"],
+      ["animation", "stand"]
+    ]
+  }
+]

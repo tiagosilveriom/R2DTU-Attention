@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PEPPER_PLANNER"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pepper_planner">
+				<Option output="/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/pepper_planner" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG_PRINT"/>
+					<Add option="-DPRINT_PARTIAL"/>
+					<Add directory="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner"/>
+					<Add directory="/home/pepper/r2dtu_original/Pepper_Planner/Formula"/>
+					<Add directory="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 pepper_planner"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pepper_planner/fast">
+				<Option output="/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/pepper_planner" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG_PRINT"/>
+					<Add option="-DPRINT_PARTIAL"/>
+					<Add directory="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner"/>
+					<Add directory="/home/pepper/r2dtu_original/Pepper_Planner/Formula"/>
+					<Add directory="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 pepper_planner/fast"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/pepper/r2dtu_original/Pepper_Planner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Custom_Lexer.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Custom_Lexer.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Custom_Parser.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Custom_Parser.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Domain_Buffer.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Domain_Buffer.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Loader.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Domain_Loader/Loader.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Formula/Formula.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Formula/Formula.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Formula/Formula_Component.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Formula/Formula_Component.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Formula/Formula_Converter.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Formula/Formula_Converter.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Action.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Action.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Action_Event.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Action_Event.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Action_Library.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Action_Library.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Agent.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Agent.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Bisimulation_Context.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Bisimulation_Context.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Core.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Core.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/DEL_Interface.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/DEL_Interface.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/DEL_Operations.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/DEL_Operations.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Domain.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Domain.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Domain_Interface_Implementation.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Domain_Interface_Implementation.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Environment_Loader.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Environment_Loader.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/General_Action.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/General_Action.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/General_World.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/General_World.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Graph.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Graph.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Interface_DTO.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Interface_DTO.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Main.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Misc.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Misc.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Node.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Node.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Node_Comparator.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Node_Comparator.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Planner.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Planner.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Policy.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Policy.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/State.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/State.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Types.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/Types.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/World.cpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/Pepper_Planner/World.hpp">
+			<Option target="pepper_planner"/>
+		</Unit>
+		<Unit filename="/home/pepper/r2dtu_original/Pepper_Planner/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

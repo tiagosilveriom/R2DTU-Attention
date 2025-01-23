@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -e
+cd "$(dirname "$0")/.."
+
+if ! lsb_release --all | grep -qi 18.04; then
+  echo "This script only functions on Ubuntu 18.04"
+  exit 1
+fi
+
+#Install x86_64 toolchain used for compiling the components not running on the robot
+install_host_toolchain() {
+  sudo dpkg --add-architecture i386
+  sudo apt-get install update
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y build-essential g++ cmake ninja-build make gcc-i686-linux-gnu \
+    gcc-multilib-i686-linux-gnu g++-i686-linux-gnu g++-multilib-i686-linux-gnu libboost-all-dev libpython3-all-dev unzip \
+    wget libopenblas-dev liblapack-dev libopencv-dev libsdl2-gfx-dev libsdl2-ttf-dev libsdl2-image-dev python3-numpy \
+    linux-libc-dev:i386 automake dkms python3-pip
+
+    if [ ! -f /usr/include/librealsense2/rs.h ]; then
+        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver keys.gnupg.net --recv-key C8B3A55A6F3EFCDE
+        sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo bionic main" -u
+        wget https://github.com/IntelRealSense/librealsense/files/3517746/librealsense2-dkms_1.3.5-0ubuntu1_all.deb.txt
+        mv librealsense2-dkms_1.3.5-0ubuntu1_all.deb.txt librealsense2-dkms_1.3.5-0ubuntu1_all.deb
+        sudo apt-get install -y librealsense2-utils librealsense2-dev librealsense2-dbg
+        sudo dpkg -i librealsense2-dkms_1.3.5-0ubuntu1_all.deb
+    fi
+
+  sudo apt-get purge
+  sudo apt-get clean
+}
+
+install_host_toolchain
+
+echo "Done bootstrapping"

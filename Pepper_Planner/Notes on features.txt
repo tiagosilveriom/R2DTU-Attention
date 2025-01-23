@@ -1,0 +1,20 @@
+Product update, should we consider reachability of depth >1? seems a->b->c shouldn't result in a->c
+
+Perspective shift, should there be an indistinguishability relation between all worlds for the given agent?
+
+Split into globals, how should it work exactly? Currently created a new state for each designated world, where said designated world is the only one which is designated, and removed all, but the reflexive indistinguishability for the agent
+
+Missing bisimilar check, currently it is possible for two bisimilar states to have two policy entries with two different actions, however it should not be practically possible since actions are always iterated in the same order.
+
+How to handle if pepper attempts an action which is not applicable?
+
+Non-deterministic actions, perceive
+
+
+
+Answers:
+- Product update, all reachable worlds from all designated worlds. Should not include a designated world if it does not have an incoming edge for the agent
+
+- If s is local for i (closed under indistinguishisability) then nothing changes
+
+- Relations should be preserved after taking globals(s)

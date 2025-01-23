@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+
+set -e
+cd "$(dirname "$0")/.."
+
+
+
+install_proprietary_dependencies() {
+
+  cd depend
+
+  if [ ! -d ctc-linux64-atom ]; then
+    if [ -f ctc-linux64-atom-2.5.2.74.zip ]; then
+      unzip ctc-linux64-atom-2.5.2.74.zip
+      mv ctc-linux64-atom-2.5.2.74 ctc-linux64-atom
+    else
+      echo "Could not find file: ctc-linux64-atom-2.5.2.74.zip"
+      return 1
+    fi
+  fi
+  if [ ! -d naoqi-sdk ]; then
+    if [ -f naoqi-sdk-2.5.5.5-linux64.tar.gz ]; then
+        tar -xf naoqi-sdk-2.5.5.5-linux64.tar.gz
+        mv naoqi-sdk-2.5.5.5-linux64 naoqi-sdk
+    else
+      echo "Could not find file: naoqi-sdk-2.5.5.5-linux64.tar.gz"
+      return 1
+    fi
+  fi
+
+  cd ..
+
+}
+
+install_open_source_dependencies() {
+
+  cd depend
+
+  #cmake - metabuild system
+  if [ ! -d cmake ]; then
+    wget https://github.com/Kitware/CMake/releases/download/v3.15.2/cmake-3.15.2-Linux-x86_64.tar.gz
+    tar -xf cmake-3.15.2-Linux-x86_64.tar.gz
+    rm cmake-3.15.2-Linux-x86_64.tar.gz
+    mv cmake-3.15.2-Linux-x86_64 cmake
+  fi
+
+  export PATH=`pwd`"/cmake/bin:$PATH"
+
+  #dlib - face detection and recognition
+  DLIB_VERSION="dlib-19.15"
+  if [ ! -d dlib ]; then
+    wget http://dlib.net/files/$DLIB_VERSION".tar.bz2"
+    tar -xf $DLIB_VERSION".tar.bz2"
+    rm $DLIB_VERSION".tar.bz2"
+    mv $DLIB_VERSION dlib
+  fi
+
+  #face_recognition_models - improved models for dlib face detection
+  if [ ! -d face_recognition_models ]; then
+    wget https://codeload.github.com/ageitgey/face_recognition_models/zip/master
+    unzip master; rm master
+    mv face_recognition_models-master face_recognition_models
+  fi
+
+  #enet - UDP networking
+  ENET_VERSION="enet-1.3.13"
+  if [ ! -d enet-x86 ]; then
+    wget "http://enet.bespin.org/download/"$ENET_VERSION".tar.gz"
+    tar -xf $ENET_VERSION".tar.gz"
+    rm $ENET_VERSION".tar.gz"
+    cp -r $ENET_VERSION enet-x86
+    mv $ENET_VERSION enet-x86-64
+  fi
+
+  #json - Used for serialization
+  if [ ! -d json ]; then
+    wget https://raw.githubusercontent.com/nlohmann/json/master/single_include/nlohmann/json.hpp
+    mkdir -p json
+    mv json.hpp json
+  fi
+
+  #redis - KV store backing
+  if [ ! -d redis ]; then
+    wget http://download.redis.io/redis-stable.tar.gz
+    tar xzf redis-stable.tar.gz
+    rm redis-stable.tar.gz
+    mv redis-stable redis
+  fi
+
+  #hiredis - Redis C binding
+  if [ ! -d hiredis ]; then
+    wget https://github.com/redis/hiredis/archive/v0.14.0.zip
+    unzip v0.14.0.zip
+    rm v0.14.0.zip
+    mv hiredis-0.14.0 hiredis
+  fi
+
+  if [ ! -d hiredis-x86 ]; then
+    cp -r hiredis hiredis-x86
+  fi
+
+  #Catch - Testing framework
+  if [ ! -d catch2 ]; then
+    mkdir catch2
+    cd catch2
+    wget https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp
+    cd ..
+  fi
+
+  #AprilTags - Fiducial markers
+  if [ ! -d apriltags ]; then
+    git clone https://github.com/AprilRobotics/apriltags.git
+  fi
+
+  #OpenPose - DNN skeleton detection
+  if [ ! -d openpose ]; then
+    git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose
+  fi
+
+  #GLM - 3D geometry linear algebra library
+  if [ ! -d glm ]; then
+    wget https://github.com/g-truc/glm/releases/download/0.9.9.5/glm-0.9.9.5.zip
+    unzip glm-0.9.9.5.zip
+    rm glm-0.9.9.5.zip
+    mv glm/glm glm-temp
+    rm -rf glm
+    mv glm-temp glm
+  fi
+
+  #Danspeech - DTU provided danish speech detection
+  if [ ! -d danspeech ]; then
+    git clone https://github.com/Rasmusafj/danspeech.git
+    cd danspeech
+    pip3 install --user . -r requirements.txt
+    pip3 install --user . librosa
+    cd ..
+  fi
+
+  cd ..
+}
+
+build_dependencies() {
+
+  cd depend
+
+  cd enet-x86-64
+  if [ ! -f .libs/libenet.a ]; then
+    ./configure
+    make -j4
+  fi
+
+  cd ../enet-x86
+  if [ ! -f .libs/libenet.a ]; then
+    sed -i "s/^am__api_version='1.14/am__api_version='1.15/" configure
+    ./configure --build=x86_64-linux-gnu --host=i686-linux-gnu "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32"
+    make -j4
+  fi
+
+  cd ../redis
+  if [ ! -f src/redis-server ]; then
+    make -j4
+  fi
+
+  cd ../hiredis
+  if [ ! -f libhiredis.a ]; then
+    make -j4
+  fi
+
+  cd ../hiredis-x86
+  if [ ! -f libhiredis.a ]; then
+    CC="i686-linux-gnu-gcc" make -j4
+  fi
+
+  cd ../apriltags
+  if [ ! -d libapriltag.so ]; then
+    cmake .
+    make -j4
+  fi
+
+  cd ../openpose
+  if [ ! -f build/src/openpose/libopenpose.so ]; then
+    bash ./scripts/ubuntu/install_deps.sh
+    mkdir -p build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make -j8
+    cd ..
+  fi
+
+  cd ../..
+}
+
+install_open_source_dependencies
+build_dependencies
+
+if ! install_proprietary_dependencies; then
+    echo "Failed to install proprietary dependencies!"
+    echo "Please see the README.md"
+    exit 1
+fi
+
+
+echo "Done with setup"

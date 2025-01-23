@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -Wall -g -g  -shared -Wl,-soname,libknowledge.so -o ../../dist/modules/libknowledge.so CMakeFiles/knowledge.dir/Knowledge.cpp.o ../common/libcommon.a -lpthread 

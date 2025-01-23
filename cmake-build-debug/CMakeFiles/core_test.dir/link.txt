@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -g -g   CMakeFiles/core_test.dir/src/core_test_runner.cpp.o  -o dist/core_test src/core/libcore.a src/common/libcommon.a -ldl ../depend/enet-x86-64/.libs/libenet.a ../depend/hiredis/libhiredis.a -lpthread 

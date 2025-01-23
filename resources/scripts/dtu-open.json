@@ -1,0 +1,18 @@
+[
+  {
+    "short":  "DTU Åbenthus",
+    "note": "Byd velkommen med ansigtsgenkendelse",
+    "items": [
+      ["animation", "animations/Stand/Gestures/BowShort_1"],
+      ["animation", "stand"]
+    ]
+  },
+  {
+    "short":  "Velkomst_1",
+    "note": "Det er en fornøjelse at møde dig",
+    "items": [
+      ["say", "Det er en fornøjelse at møde dig"],
+      ["animation", "handshake"]
+    ]
+  }
+]

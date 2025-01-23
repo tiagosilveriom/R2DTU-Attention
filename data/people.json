@@ -1,0 +1,14 @@
+[
+    {
+        "id": 2,
+        "name": "Lasse",
+        "name_known": true,
+        "encoding_file": "face_2.json"
+    },
+    {
+        "id": 1,
+        "name": "Thomas",
+        "name_known": true,
+        "encoding_file": "face_1.json"
+    }
+]

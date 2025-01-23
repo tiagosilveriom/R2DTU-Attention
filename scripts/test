@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#Run core integration test
+
+cd build-field/dist
+
+./core_test 0 &
+sleep 1
+./core_test 1

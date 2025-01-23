@@ -1,0 +1,71 @@
+_domain Pepper {
+	_announce_enabled = true
+	_types = [container, object, agent]
+	_propositions = [
+		in(container c, object o)
+		perceives(agent a, agent b)
+		reachable(agent a, container c)
+	]
+
+	_action perceive (container c, object o) {
+	_cost = 100
+		_owner = agent agent
+		_designated_events = [event0, event1]
+		_event event0 {
+			_preconditions = ( AND(reachable(agent, c), in(c, o)) )
+			_effect_add = []
+			_effect_delete = []
+		}
+		_event event1 {
+			_preconditions = ( AND(reachable(agent, c), NOT(in(c, o))) )
+			_effect_add = [ ]
+			_effect_delete = [ ]
+		}
+		_reachability = {
+			agent = {
+				(event0 event0) = (TOP)
+				(event1 event1) = (TOP)
+			}
+			_rest = {
+				(event0 event0) = (TOP)
+				(event1 event1) = (TOP)
+				(event0 event1) = (TOP)
+				(event1 event0) = (TOP)
+			}
+		}
+	}
+}
+_problem Block_Search {
+	_objects = {
+		container = [b1, b2, b3, b4]
+		object = [red]
+		agent = [R2DTU, H1]
+	}
+	_initial_state = [
+	]
+	_world w0 [in(b1, red), perceives(R2DTU, H1), perceives(H1, R2DTU), perceives(R2DTU, R2DTU), perceives(H1, H1),reachable(R2DTU, b1), reachable(R2DTU, b2), reachable(H1, b3), reachable(H1, b4)]
+	_world w1 [in(b2, red), perceives(R2DTU, H1), perceives(H1, R2DTU), perceives(R2DTU, R2DTU), perceives(H1, H1),reachable(R2DTU, b1), reachable(R2DTU, b2), reachable(H1, b3), reachable(H1, b4)]
+	_world w2 [in(b3, red), perceives(R2DTU, H1), perceives(H1, R2DTU), perceives(R2DTU, R2DTU), perceives(H1, H1),reachable(R2DTU, b1), reachable(R2DTU, b2), reachable(H1, b3), reachable(H1, b4)]
+	_world w3 [in(b4, red), perceives(R2DTU, H1), perceives(H1, R2DTU), perceives(R2DTU, R2DTU), perceives(H1, H1),reachable(R2DTU, b1), reachable(R2DTU, b2), reachable(H1, b3), reachable(H1, b4)]
+	_goal = [ OR(	AND(in(b1,red), BELIEVES(H1, in(b1, red))),
+					AND(in(b2,red), BELIEVES(H1, in(b2, red))),
+					AND(in(b3,red), BELIEVES(H1, in(b3, red))),
+					AND(in(b4,red), BELIEVES(H1, in(b4, red)))) ]
+
+	_designated_worlds = [w0, w1, w2, w3]
+	_reflexivity = false
+	_reachability = {
+		R2DTU = {
+		 (w0, w0) (w1, w0) (w2, w0) (w3, w0)
+		 (w0, w1) (w1, w1) (w2, w1) (w3, w1)
+		 (w0, w2) (w1, w2) (w2, w2) (w3, w2)
+		 (w0, w3) (w1, w3) (w2, w3) (w3, w3)
+		 }
+		H1 = {
+		 (w0, w0) (w1, w0) (w2, w0) (w3, w0)
+		 (w0, w1) (w1, w1) (w2, w1) (w3, w1)
+		 (w0, w2) (w1, w2) (w2, w2) (w3, w2)
+		 (w0, w3) (w1, w3) (w2, w3) (w3, w3)
+		 }
+	}
+}

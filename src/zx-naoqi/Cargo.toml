@@ -1,0 +1,16 @@
+[package]
+name = "zx-naoqi"
+version = "0.1.0"
+authors = ["Lasse Dissing Hansen"]
+edition = "2018"
+
+[dependencies]
+naoqi-plugin = { path = "naoqi-plugin" }
+naoqi-ipc = { path = "naoqi-ipc" }
+
+[workspace]
+members = [
+    "naoqi-plugin",
+    "naoqi-ipc"
+]
+

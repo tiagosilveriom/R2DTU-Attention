@@ -1,0 +1,27 @@
+/home/s154250/clion-2019.2.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DMODULE_TARGET=field -G "CodeBlocks - Unix Makefiles" /home/pepper/r2dtu_original
+-- Boost version: 1.65.1
+CMake Warning at /home/s154250/clion-2019.2.1/bin/cmake/linux/share/cmake-3.14/Modules/FindBoost.cmake:1832 (message):
+  No header defined for python-py36; skipping header check
+Call Stack (most recent call first):
+  cmake/field.cmake:19 (find_package)
+  CMakeLists.txt:29 (include)
+
+
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   python-py36
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.6m.so (found suitable version "3.6.9", minimum required is "3") 
+-- Using CMake version: 3.14.5
+-- Compiling dlib version: 19.15.0
+-- Enabling AVX instructions
+-- Searching for BLAS and LAPACK
+-- Searching for BLAS and LAPACK
+-- Checking for module 'cblas'
+--   No package 'cblas' found
+-- Found OpenBLAS library
+-- Using OpenBLAS's built in LAPACK
+-- C++11 activated.
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.6m.so (found version "3.6.9") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/pepper/r2dtu_original/cmake-build-debug
