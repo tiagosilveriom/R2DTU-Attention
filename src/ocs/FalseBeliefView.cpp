@@ -47,9 +47,13 @@ std::string FalseBeliefView::title() {
 
 Color movable_color_lookup(char id) {
     switch (id) {
-        case '1' : return Color::bright_red();
-        case '2' : return Color::bright_green();
-        case '3' : return Color::bright_blue();
+        case '1' : 
+        case 'a' : return Color::bright_red();
+        case '2' : 
+        case 'k' : return Color::bright_green();
+        case '3' : 
+        case 'b' : return Color::bright_blue();
+        case 'c' : return Color::red();
         default: return Color::black();
     }
 }
@@ -59,7 +63,7 @@ std::string movable_object_name(char id) {
         case 'b' : return "bottle";
         case 'k' : return "knife";
         case 'a' : return "apple";
-        default: "";
+        case 'c' : return "cup";
     }
 }
 

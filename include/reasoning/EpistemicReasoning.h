@@ -189,19 +189,19 @@ public:
         //   auto result = d_->perform_oc(changes, {});
 
         // TODO: implement gaze estimation to reduce the attendable propositions
-        auto i = agent_infos_.at(name).id;
-        agent_infos_.at(name).state = Agent::Present;
+        //auto i = agent_infos_.at(name).id;
+        //agent_infos_.at(name).state = Agent::Present;
         
-        auto changes = d_->get_domain_non_attention_propositions_id(); // This can only return non attentional propositions
+        //auto changes = d_->get_domain_non_attention_propositions_id(); // This can only return non attentional propositions
         // Changes are the set of added proposition_id when agent i appears
         //auto result = d_->perform_ac_top_down_v2(i, changes, {});
-        auto result = d_->perform_ac_bottom_up_v1({i}, changes, {});
-        latest_state_ = result.second;
+        //auto result = d_->perform_ac_bottom_up_v1({i}, changes, {});
+        //latest_state_ = result.second;
 
-        d_->print_state_overview(d_->get_state(latest_state_),changes);
+        //d_->print_state_overview(d_->get_state(latest_state_),changes);
 
-        d_->others_agents_belief_regarding_attention(latest_state_,i);
-        printf("Agent appeared with attention component !");
+        //d_->others_agents_belief_regarding_attention(latest_state_,i);
+        printf("Agent appeared without attention changes !");
 
     }
 
@@ -230,12 +230,13 @@ public:
         //auto result = d_->perform_ac_top_down_v2(i , {} , changes);
         auto result = d_->perform_ac_bottom_up_v1({i} , {} , changes);
 
+        /*Confirm other agents know the agent who disappeared is not paying attention to anything */
+
         latest_state_ = result.second;
 
         d_->print_state_overview(d_->get_state(latest_state_), d_->get_domain_propositions_id());
 
         d_->others_agents_belief_regarding_attention(latest_state_,i);
-
 
 
     }
@@ -251,6 +252,18 @@ public:
         latest_state_ = result.second;
     }
 */
+    void remove_conscious_attention(const std::string& agent, const std::string& object, const std::string& container) {
+        auto a_id = agent_infos_.at(agent).id;
+        auto p_id = d_->get_proposition_id("in(" + object + "," + container + ")");
+        printf("Perform conscious attention shift of  %s out of %s located at %s\n",  agent.c_str(), object.c_str(), container.c_str());
+        auto result = d_->perform_ac_top_down_v2(a_id,{}, {p_id});
+        latest_state_ = result.second;
+        produce_views();
+
+        d_->print_state_overview(d_->get_state(latest_state_), d_->get_domain_propositions_id());
+
+        d_->others_agents_belief_regarding_attention(latest_state_,a_id);
+    }
     void direct_conscious_attention(const std::string& agent, const std::string& object, const std::string& container) {
         auto a_id = agent_infos_.at(agent).id;
         auto p_id = d_->get_proposition_id("in(" + object + "," + container + ")");
@@ -258,6 +271,29 @@ public:
         auto result = d_->perform_ac_top_down_v2(a_id,{p_id}, {});
         latest_state_ = result.second;
         produce_views();
+
+        d_->print_state_overview(d_->get_state(latest_state_), d_->get_domain_propositions_id());
+
+        d_->others_agents_belief_regarding_attention(latest_state_,a_id);
+    }
+    void direct_unconscious_attention(const std::string& agent, const std::string& object, const std::string& container) {
+        //auto a_id = agent_infos_.at(agent).id;
+        auto p_id = d_->get_proposition_id("in(" + object + "," + container + ")");
+        printf("Perform universal unconscious attention shift regarding %s located at %s\n", object.c_str(), container.c_str());
+
+        std::vector<del:: agent_id > agents_id ;
+        for (auto agent:agents_)
+        {
+            agents_id.push_back(agent_infos_.at(agent).id);
+        }
+
+        auto result = d_->perform_ac_bottom_up_v1(agents_id,{p_id}, {});
+        latest_state_ = result.second;
+        produce_views();
+
+        d_->print_state_overview(d_->get_state(latest_state_), d_->get_domain_propositions_id());
+
+        //d_->others_agents_belief_regarding_attention(latest_state_,a_id);
     }
     void put_in_container(const std::string& agent, const std::string& object, const std::string& container) {
         auto a_id = agent_infos_.at(agent).id;

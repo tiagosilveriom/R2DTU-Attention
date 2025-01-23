@@ -119,6 +119,8 @@ namespace ObjectDetection {
                         }
                     }
                     if(!already_found) */
+                    if(perception.id==108) continue; // Ignore ireelevant detections
+                    
                     percepts.push_back(perception); // Add to percepts array
 
                 }
@@ -169,7 +171,7 @@ namespace ObjectDetection {
         if(object_name=="knife") return 104;
         else if(object_name=="apple") return 105;
         else if (object_name=="bottle") return 106;
-        else if (object_name=="cup") return 107;
+        else if (object_name=="cup" || object_name=="glass") return 107;
         else return 108; //108 is ID for Uknown
     }
     std::vector<std::string> get_object_affordances(PerceptionObjectType type)
@@ -179,7 +181,7 @@ namespace ObjectDetection {
             case PerceptionObjectType::Knife:  return {"cutting"};
             case PerceptionObjectType::Fruit:  return {"eatable","cuttable"};
             case PerceptionObjectType::Bottle:  return {"pouring","fillable"};
-            case PerceptionObjectType::Cup:    return {"drinking","fillable"};
+            case PerceptionObjectType::Cup:    return {"drinkable","fillable"};
             default: return {};
                                      
         }

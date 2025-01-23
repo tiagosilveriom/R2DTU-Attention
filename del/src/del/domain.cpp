@@ -833,8 +833,8 @@ namespace del {
 			proposition_id attention_agent_prop = this->get_attention_proposition_id(i, p);
 			ac_action.set_post(e0, attention_agent_prop, true, this->proposition_bitset_state);
 
-			bool prop_actual_valuation = last_state.get_prop_valuation_actual_world(p, this->proposition_bitset_state); 
-			ac_action.set_post(e0, p, prop_actual_valuation, this->proposition_bitset_state);
+			//bool prop_actual_valuation = last_state.get_prop_valuation_actual_world(p, this->proposition_bitset_state); 
+			//ac_action.set_post(e0, p, prop_actual_valuation, this->proposition_bitset_state);
 		}
 
 		for (auto p : del)
@@ -887,8 +887,8 @@ namespace del {
 					ac_action.set_post(current_e, attention_agent_prop, true, this->proposition_bitset_state);
 
 					//learning p
-					bool prop_actual_valuation = last_state.get_prop_valuation_actual_world(p, this->proposition_bitset_state); 
-					ac_action.set_post(current_e, p, prop_actual_valuation, this->proposition_bitset_state);
+					//bool prop_actual_valuation = last_state.get_prop_valuation_actual_world(p, this->proposition_bitset_state); 
+					//ac_action.set_post(current_e, p, prop_actual_valuation, this->proposition_bitset_state);
 				}
 				
 				for (auto p : subset_del)
@@ -1153,6 +1153,8 @@ namespace del {
 	std::string domain::get_attention_proposition_name(agent_id a, proposition_id p) const
 	{
 		return this->get_agent_name(a) + "_is_paying_attention_to_" + this->get_proposition_name(p);
+		//return "h(" + this->get_agent_name(a) + "," + this->get_proposition_name(p)+ ")";
+
 	}
 /*
 	std::pair<agent_id, proposition_id> domain::get_agent_and_proposition(proposition_id attention_prop) const {

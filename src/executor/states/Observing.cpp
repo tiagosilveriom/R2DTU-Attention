@@ -52,22 +52,6 @@ public:
             //r.look_at(start);  // Reset gaze to starting position
             return true;
         }
-        // TO REMOVE WHEN POINTING ACHIEVED
-        /*
-            auto target = marker_pos + target_offset;
-            r.move_to(target);
-        }
-        if (counter == 100) {
-            r.push();
-        }
-        if (counter == 250) {
-            r.move_to(start);
-        }
-
-        if (counter == 300) {
-            r.toggle_breathing(true);
-            return true;
-        }*/
         ++counter;
         return false;
     }
@@ -466,11 +450,14 @@ void Observing::inform_about_false_belief_box(const std::string& agent, const st
         sprintf(buffer, L10N_LOOKING_FOR, color.c_str(), std::to_string(number-1000).c_str());
 
         current_sequence = std::make_unique<ShowBoxSequence>(buffer, number);
-        
-        /* Still to replace by Bottom Up */
+        /*
         epistemic.take_out_of_container("R2DTU", cube_name, box);
         epistemic.put_in_container("R2DTU", cube_name, box_name);
-        
+        */
+        epistemic.take_out_of_container("R2DTU", cube_name, box);
+        epistemic.direct_unconscious_attention(agent, cube_name, box_name);
+        epistemic.put_in_container("R2DTU", cube_name, box_name);
+
     }
 }
 
@@ -481,24 +468,39 @@ void Observing::inform_about_false_belief_object(const std::string& agent, const
     int pos= obj_holded.find("-");
     auto obj_holded_name= obj_holded.substr(0,pos);
     auto matching_obj_name= get_matching_affordances(obj_holded_name); //return matching affordance object (e.g : input is knife, returns apple)
-    std::cout<<agent << " is holding " << obj_holded_name <<  ", so he might be lookign for "  << matching_obj_name << "\n";
+    std::cout<<agent << " is holding " << obj_holded_name <<  ", so he might be looking for "  << matching_obj_name << "\n";
     auto q1 = make_and(
             make_believes(agent,make_predicate("in", make_constant(matching_obj_name), make_variable("x"))),
             make_not(make_predicate("in", make_constant(matching_obj_name), make_variable("x"))));
 
-    auto res = epistemic.query(q1);
-    if (res.empty()) { // No false belief
-    std::cout<<"RETURN : NO FALSE BELIEF\n";
+
+    auto res1 = epistemic.query(q1);
+
+    /* Find where the object is located */
+    auto q2 = make_predicate("in", make_constant(matching_obj_name), make_variable("x"));
+    auto res2 = epistemic.query(q2);
+    
+    //std::cout<<"*********Object located at box: "<< res2[0] << "***********\n";
+
+    /* If no answers to the query, object is outside of any box */
+    bool object_outside = res2.empty(); // Matching object not inside boxes
+
+    if (res1.empty()) { // No false belief
+        std::cout<<"RETURN : NO FALSE BELIEF\n";
+
+        /* If object is inside some box, agentś attention is directed to that proposition*/
+        if(!object_outside) {
+            auto box_name = res2[0];
+            epistemic.direct_conscious_attention(agent, matching_obj_name,box_name);
+            //epistemic.put_in_container("R2DTU", matching_obj_name, box_name); 
+        }
         return;
     }
-    auto box_fb = res[0];
-    auto q2 = make_predicate("in", make_constant(matching_obj_name), make_variable("x"));
-    res = epistemic.query(q2);
+    
+    auto box_bf=res1[0];
+    epistemic.direct_conscious_attention(agent, matching_obj_name,box_bf); //Attention directed to proposition according to False Belief
 
-    std::cout<<"*********Desired box: "<< res[0] << "***********\n";
-    bool knows_location = res.empty(); // Matching object not inside boxes
-
-    bool should_inform = epistemic.plan(matching_obj_name, knows_location);
+    bool should_inform = epistemic.plan(matching_obj_name, object_outside);
 
     if (should_inform) {
         std::cout<<"*********SHould inform ***********\n";
@@ -508,8 +510,7 @@ void Observing::inform_about_false_belief_object(const std::string& agent, const
                 other_name = other_agent->name;
             }
         }
-
-        auto box_name = res[0];
+        auto box_name = res2[0];
         auto number = stoi(box_name.substr(box_name.size() - 4));
         char buffer[128];
 
@@ -519,9 +520,16 @@ void Observing::inform_about_false_belief_object(const std::string& agent, const
         sprintf(buffer, L10N_OBJECT_LOOKING_FOR, matching_obj_name.c_str() , std::to_string(number-1000).c_str());
 
         current_sequence = std::make_unique<ShowBoxSequence>(buffer, number);
+        auto box_fb = res1[0];
+
         //epistemic.take_out_of_container("R2DTU", matching_obj_name, box_fb);
         //epistemic.put_in_container("R2DTU", matching_obj_name, box_name);
-        epistemic.direct_conscious_attention(agent, matching_obj_name, box_name);
+
+        epistemic.direct_unconscious_attention(agent, matching_obj_name, box_name);
+        epistemic.take_out_of_container("R2DTU", matching_obj_name, box_fb);
+        epistemic.put_in_container("R2DTU", matching_obj_name, box_name);
+        epistemic.remove_conscious_attention(agent, matching_obj_name, box_fb);
+
     }
 }
 
@@ -627,7 +635,7 @@ void Observing::intention_trigger(WorldObject* obj1, WorldObject* obj2) {
     }
 
 }
-
+/*
 void Observing::intention_trigger_complementary(WorldObject* obj1, WorldObject* obj2) {
     PersonObj* person = (PersonObj*) obj1;
     MovableObj* movable = (MovableObj*) obj2;
@@ -644,19 +652,80 @@ void Observing::intention_trigger_complementary(WorldObject* obj1, WorldObject* 
     bool right_inside = glm::all(glm::lessThanEqual(glm::abs(person->latest_pose.joints[4] - aabb_origin), aabb_extent));
     bool left_inside = glm::all(glm::lessThanEqual(glm::abs(person->latest_pose.joints[7] - aabb_origin), aabb_extent));
     if (right_inside && right_valid) {
-        //inform_about_false_belief_box(person->name, movable->name);
-        //std::cout<<"*****HOLDING OBJECT "<< movable->name << "*******\n";
-        //TODO: - search for objects that match the functional affordance of the holded object
-        //      - add attention shift to that /those objects
-        //      - inform in case there is no uncertainty and there is a false belief regarding that object
+        std::cout<<"*****HOLDING OBJECT "<< movable->name << "*******\n";
         inform_about_false_belief_object(person->name, movable->name);
     } else if (left_inside && left_valid) {
-        //inform_about_false_belief_box(person->name, movable->name);
+        
         std::cout<<"*****HOLDING OBJECT "<< movable->name << "*******\n";
         inform_about_false_belief_object(person->name, movable->name);
     }
 
+}*/
+#include <unordered_map>
+#include <chrono>
+
+struct HoldingState {
+    bool right_inside = false;
+    bool left_inside = false;
+    std::chrono::steady_clock::time_point right_start_time;
+    std::chrono::steady_clock::time_point left_start_time;
+};
+
+std::unordered_map<std::string, HoldingState> holding_states;
+
+void Observing::intention_trigger_complementary(WorldObject* obj1, WorldObject* obj2) {
+    PersonObj* person = (PersonObj*) obj1;
+    MovableObj* movable = (MovableObj*) obj2;
+
+    if (person->status != WorldObjectStatus::Tracked || person->name.empty()) return;
+    if (movable->status == WorldObjectStatus::Hypothetical || movable->marker_id >= 200 || movable->marker_id <= 100) return;
+
+    glm::vec3 aabb_offset = {0.0f, -0.35f, 0.1f};
+    glm::vec3 aabb_extent = {0.1f, 0.30f, 0.25f};
+    glm::vec3 aabb_origin = movable->center + aabb_offset;
+
+    bool right_valid = person->latest_pose.certainty[4] > 0.3;
+    bool left_valid = person->latest_pose.certainty[7] > 0.3;
+
+    bool right_inside = glm::all(glm::lessThanEqual(glm::abs(person->latest_pose.joints[4] - aabb_origin), aabb_extent));
+    bool left_inside = glm::all(glm::lessThanEqual(glm::abs(person->latest_pose.joints[7] - aabb_origin), aabb_extent));
+
+    // Construct unique key for this person-object pair
+    std::string key = person->name + ":" + movable->name;
+
+    // Access or initialize holding state
+    auto& state = holding_states[key];
+    auto now = std::chrono::steady_clock::now();
+
+    // Update right hand state
+    if (right_inside && right_valid) {
+        if (!state.right_inside) {
+            state.right_start_time = now; // Start timing
+            state.right_inside = true;
+        } else if (std::chrono::duration_cast<std::chrono::seconds>(now - state.right_start_time).count() >= 1) {
+            // Trigger if the hand has been inside for at least 1 second
+            std::cout << "*****HOLDING OBJECT " << movable->name << " (Right Hand) *******\n";
+            inform_about_false_belief_object(person->name, movable->name);
+        }
+    } else {
+        state.right_inside = false; // Reset if not inside
+    }
+
+    // Update left hand state
+    if (left_inside && left_valid) {
+        if (!state.left_inside) {
+            state.left_start_time = now; // Start timing
+            state.left_inside = true;
+        } else if (std::chrono::duration_cast<std::chrono::seconds>(now - state.left_start_time).count() >= 1) {
+            // Trigger if the hand has been inside for at least 1 second
+            std::cout << "*****HOLDING OBJECT " << movable->name << " (Left Hand) *******\n";
+            inform_about_false_belief_object(person->name, movable->name);
+        }
+    } else {
+        state.left_inside = false; // Reset if not inside
+    }
 }
+
 
 static const float CUBE_TRACKING_DISTANCE = 0.25f;
 static const int CUBE_TRACKING_TIMEOUT = 8;
@@ -674,14 +743,7 @@ bool Observing::tick(Robot& r) {
 
     //std::cout << "MOVABLE OBJECTS: \n";
     for (auto movable : r.world.iter_movables()) {
-        /*
-        if (movable->marker_id < 1000) { //Containers
-            std::cout<< "Object " << movable->name  << " ";
-            if(movable->type == PerceptionObjectType::Fruit)   std::cout<< "Fruit \n";
-            else if(movable->type== PerceptionObjectType::Knife)   std::cout<< "Knife \n";
-            else std::cout<< "wtf is the type \n";
-            continue; 
-        }*/
+
         epistemic.update_container(movable->name, movable->center);
     }
 
@@ -752,9 +814,10 @@ bool Observing::tick(Robot& r) {
 // Affordance mapping
 std::unordered_map<std::string, std::string> affordance_map = {
     {"knife", "apple-105"},   // Knife can cut apple or bread
-    {"apple", "knife"},           // Apple is cuttable by knife
-    {"bottle", "glass"}, // Bottle can be filled with water or poured into a glass
-    {"glass", "bottle"},          // Glass can receive liquid from a bottle
+    {"apple", "knife-104"},           // Apple is cuttable by knife
+    {"bottle", "cup-107"}, // Bottle can be filled with water or poured into a glass
+    {"glass", "bottle-106"},          // Glass can receive liquid from a bottle
+    {"cup", "bottle-106"},          // Glass can receive liquid from a bottle
 };
 
 std::string get_matching_affordances(const std::string& obj) {

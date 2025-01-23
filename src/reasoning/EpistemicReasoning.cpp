@@ -302,7 +302,7 @@ void EpistemicReasoning::produce_views() {
         }
     }
 }
-
+/*
 std::string translate_into_symbol_names(std::string name) {
     if (name.rfind("box", 0) == 0) {
         return "marker-100" + std::string(1, name.back()); // box + number
@@ -351,7 +351,82 @@ static std::unordered_map<std::string, std::string> inverse_translate_map_dk = {
         {"marker-1002", "kasse 2"},
         {"marker-1003", "kasse 3"},
         {"marker-1004", "kasse 4"},
+};*/
+std::string translate_into_symbol_names(std::string name) {
+    if (name.rfind("box", 0) == 0) {
+        return "marker-100" + std::string(1, name.back()); // box + number
+    } else if (name == "red") {
+        return "marker-1";
+    } else if (name == "green") {
+        return "marker-2";
+    } else if (name == "blue") {
+        return "marker-3";
+    } else if (name == "apple") {
+        return "apple-105";
+    } else if (name == "knife") {
+        return "knife-104";
+    } else if (name == "cup") {
+        return "cup-107";
+    } else if (name == "bottle") {
+        return "bottle-106";
+    } else {
+        printf("Unknown obj: %s\n", name.c_str());
+        return name;
+    }
 };
+
+std::string translate_into_symbol_names_dk(std::string name) {
+    if (name.rfind("kasse", 0) == 0) {
+        return "marker-100" + std::string(1, name.back());
+    } else if (name == "røde") {
+        return "marker-1";
+    } else if (name == "grønne") {
+        return "marker-2";
+    } else if (name == "blå") {
+        return "marker-3";
+    } else if (name == "æble") {
+        return "apple-105";
+    } else if (name == "kniv") {
+        return "knife-104";
+    } else if (name == "kop") {
+        return "cup-107";
+    } else if (name == "flaske") {
+        return "bottle-106";
+    } else {
+        printf("Unknown obj: %s\n", name.c_str());
+        return name;
+    }
+};
+
+static std::unordered_map<std::string, std::string> inverse_translate_map_en = {
+        {"marker-1", "red cube"},
+        {"marker-2", "green cube"},
+        {"marker-3", "blue cube"},
+        {"marker-1001", "box 1"},
+        {"marker-1002", "box 2"},
+        {"marker-1003", "box 3"},
+        {"marker-1004", "box 4"},
+        {"apple-105", "apple"},
+        {"knife-104", "knife"},
+        {"cup-107", "cup"},
+        {"bottle-106", "bottle"},
+};
+
+static std::unordered_map<std::string, std::string> inverse_translate_map_dk = {
+        {"marker-1", "røde klods"},
+        {"marker-2", "grønne klods"},
+        {"marker-3", "blå klods"},
+        {"marker-1001", "kasse 1"},
+        {"marker-1002", "kasse 2"},
+        {"marker-1003", "kasse 3"},
+        {"marker-1004", "kasse 4"},
+        {"apple-105", "æble"},
+        {"knife-104", "kniv"},
+        {"cup-107", "kop"},
+        {"bottle-106", "flaske"},
+};
+
+
 
 std::string inverse_translate(std::string name, std::unordered_map<std::string, std::string> map) {
 
