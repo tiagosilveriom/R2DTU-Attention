@@ -1,0 +1,4 @@
+build*
+depend/*
+!depend/face_recognition_model.hpp
+*.pyc
