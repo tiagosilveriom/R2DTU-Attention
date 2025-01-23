@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcore.a  CMakeFiles/core.dir/ModuleLoader.cpp.o CMakeFiles/core.dir/Node.cpp.o CMakeFiles/core.dir/Network.cpp.o CMakeFiles/core.dir/KVStore.cpp.o
-/usr/bin/ranlib libcore.a

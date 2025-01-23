@@ -1,2 +1,0 @@
-/usr/bin/ar qc libdel.a  CMakeFiles/del.dir/del/src/del/action.cpp.o CMakeFiles/del.dir/del/src/del/domain.cpp.o CMakeFiles/del.dir/del/src/del/formula.cpp.o CMakeFiles/del.dir/del/src/del/state.cpp.o
-/usr/bin/ranlib libdel.a

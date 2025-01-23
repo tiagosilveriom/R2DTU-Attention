@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcommon.a  CMakeFiles/common.dir/Timer.cpp.o CMakeFiles/common.dir/Message.cpp.o
-/usr/bin/ranlib libcommon.a
