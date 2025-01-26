@@ -1,0 +1,3 @@
+[submodule "del"]
+	path = del
+	url = https://github.com/tiagosilveriom/del-attention.git
