@@ -51,16 +51,16 @@ namespace del
 		std::pair<action_id, state_id> perform_do(agent_id agent, std::vector<proposition_id> add, std::vector<proposition_id> del);
 
 		//Represents the public attention shift on some proposition - version 1
-		std::pair<action_id, state_id> perform_ac_bottom_up_v1(std::vector<agent_id>  agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del);
+		std::pair<action_id, state_id> perform_minimal_bottom_up(std::vector<agent_id>  agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del);
 
 		//Represents the public attention shift on some proposition - version 2
-		std::pair<action_id, state_id> perform_ac_bottom_up_v2(std::vector<agent_id>  agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del);
+		std::pair<action_id, state_id> perform_expanded_bottom_up(std::vector<agent_id>  agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del);
 
 		//Represents the private attention shift of agent i on some proposition -version 1
-		std::pair<action_id, state_id> perform_ac_top_down_v1(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del);
+		std::pair<action_id, state_id> peform_private_top_down(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del);
 
 		//Represents the private attention shift of agent i on some proposition -version 2
-		std::pair<action_id, state_id> perform_ac_top_down_v2(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del);
+		std::pair<action_id, state_id> peform_conscious_top_down(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del);
 
 		// represents an observation change between two agents. It models changes in who observes whom, which is reflected in the postconditions and the accessibility relations.
 		std::pair<action_id, state_id> perform_oc(std::vector<std::pair<agent_id, agent_id>> add, std::vector<std::pair<agent_id, agent_id>> del);

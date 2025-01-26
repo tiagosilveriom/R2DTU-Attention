@@ -526,8 +526,6 @@ void Observing::inform_about_false_belief_object(const std::string& agent, const
         //epistemic.put_in_container("R2DTU", matching_obj_name, box_name);
 
         epistemic.direct_unconscious_attention(agent, matching_obj_name, box_name);
-        epistemic.take_out_of_container("R2DTU", matching_obj_name, box_fb);
-        epistemic.put_in_container("R2DTU", matching_obj_name, box_name);
         epistemic.remove_conscious_attention(agent, matching_obj_name, box_fb);
 
     }

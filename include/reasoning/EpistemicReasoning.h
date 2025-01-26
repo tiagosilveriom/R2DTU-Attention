@@ -194,8 +194,8 @@ public:
         
         //auto changes = d_->get_domain_non_attention_propositions_id(); // This can only return non attentional propositions
         // Changes are the set of added proposition_id when agent i appears
-        //auto result = d_->perform_ac_top_down_v2(i, changes, {});
-        //auto result = d_->perform_ac_bottom_up_v1({i}, changes, {});
+        //auto result = d_->peform_conscious_top_down(i, changes, {});
+        //auto result = d_->perform_minimal_bottom_up({i}, changes, {});
         //latest_state_ = result.second;
 
         //d_->print_state_overview(d_->get_state(latest_state_),changes);
@@ -227,8 +227,8 @@ public:
 
         auto changes = d_->get_domain_non_attention_propositions_id();
         // Changes are the set of deleted proposition_id when agent i disappears
-        //auto result = d_->perform_ac_top_down_v2(i , {} , changes);
-        auto result = d_->perform_ac_bottom_up_v1({i} , {} , changes);
+        //auto result = d_->peform_conscious_top_down(i , {} , changes);
+        auto result = d_->perform_minimal_bottom_up({i} , {} , changes);
 
         /*Confirm other agents know the agent who disappeared is not paying attention to anything */
 
@@ -256,7 +256,7 @@ public:
         auto a_id = agent_infos_.at(agent).id;
         auto p_id = d_->get_proposition_id("in(" + object + "," + container + ")");
         printf("Perform conscious attention shift of  %s out of %s located at %s\n",  agent.c_str(), object.c_str(), container.c_str());
-        auto result = d_->perform_ac_top_down_v2(a_id,{}, {p_id});
+        auto result = d_->peform_conscious_top_down(a_id,{}, {p_id});
         latest_state_ = result.second;
         produce_views();
 
@@ -268,7 +268,7 @@ public:
         auto a_id = agent_infos_.at(agent).id;
         auto p_id = d_->get_proposition_id("in(" + object + "," + container + ")");
         printf("Perform conscious attention shift of  %s regarding %s located at %s\n",  agent.c_str(), object.c_str(), container.c_str());
-        auto result = d_->perform_ac_top_down_v2(a_id,{p_id}, {});
+        auto result = d_->peform_conscious_top_down(a_id,{p_id}, {});
         latest_state_ = result.second;
         produce_views();
 
@@ -287,7 +287,7 @@ public:
             agents_id.push_back(agent_infos_.at(agent).id);
         }
 
-        auto result = d_->perform_ac_bottom_up_v1(agents_id,{p_id}, {});
+        auto result = d_->perform_expanded_bottom_up(agents_id,{p_id}, {});
         latest_state_ = result.second;
         produce_views();
 

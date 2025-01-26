@@ -306,7 +306,7 @@ int main(int argc, char* argv[])
 	std::cout << f.to_string(d, f_anne_believes_basket) << " = " << (d.evaluate_formula(s2, f, f_anne_believes_basket) ? "true" : "false") << ".\n";
 
 	// Anne shifts top-down attention to basket
-	auto[a3, s3] = d.perform_ac_top_down_v2(anne, {marble_in_basket}, {});
+	auto[a3, s3] = d.peform_conscious_top_down(anne, {marble_in_basket}, {});
 	std::cout << "*************************************************************\n" ;
 	std::cout << "**** ACTION 3:  Anne shifts Top-Down Attention to basket ****\n" ;
 	std::cout << "*************************************************************\n" ;
@@ -329,7 +329,7 @@ int main(int argc, char* argv[])
 	std::cout << f.to_string(d, f_sally_believes_basket) << " = " << (d.evaluate_formula(s3, f, f_sally_believes_basket) ? "true" : "false") << ".\n";
 
 	// Sally shifts top-down attention from basket
-	auto[a4, s4] = d.perform_ac_top_down_v2(sally, {}, {marble_in_basket});
+	auto[a4, s4] = d.peform_conscious_top_down(sally, {}, {marble_in_basket});
 	std::cout << "****************************************************************\n" ;
 	std::cout << "**** ACTION 4:  Sally shifts Top-Down Attention from basket ****\n" ;
 	std::cout << "****************************************************************\n" ;
@@ -443,10 +443,10 @@ int main(int argc, char* argv[])
 	d.print_state_overview(d.get_state(s0), { marble_in_basket,marble_in_box, marble_in_table, sally_attention_marble_in_basket, sally_attention_marble_in_table,sally_attention_marble_in_box, anne_attention_marble_in_basket,anne_attention_marble_in_box,anne_attention_marble_in_table  } );
 
 	// Sally shifts top-down attention to basket
-	auto[a1, s1] = d.perform_ac_top_down_v2(sally, {marble_in_basket}, {marble_in_box});
-	//auto[a1, s1] = d.perform_ac_bottom_up_v1({sally}, {marble_in_basket}, {});
+	auto[a1, s1] = d.peform_conscious_top_down(sally, {marble_in_basket}, {marble_in_box});
+	//auto[a1, s1] = d.perform_minimal_bottom_up({sally}, {marble_in_basket}, {});
 
-	//auto[a1, s1] = d.perform_ac_bottom_up_v1({sally}, {}, {marble_in_basket});
+	//auto[a1, s1] = d.perform_minimal_bottom_up({sally}, {}, {marble_in_basket});
 
 	std::cout << "****************************************************************\n" ;
 	std::cout << "**** ACTION 1:  Sally shifts Top-Down Attention to basket ****\n" ;
@@ -464,8 +464,8 @@ int main(int argc, char* argv[])
 	d.print_state_overview(d.get_state(s2), { marble_in_basket,marble_in_box, marble_in_table, sally_attention_marble_in_basket, sally_attention_marble_in_table,sally_attention_marble_in_box, anne_attention_marble_in_basket,anne_attention_marble_in_box,anne_attention_marble_in_table  } );
 	
 	// Anne shifts top-down attention from box
-	//auto[a3, s3] = d.perform_ac_top_down_v2(anne, {}, {});
-	auto[a3, s3] = d.perform_ac_bottom_up_v1({anne}, {marble_in_table}, {});
+	//auto[a3, s3] = d.peform_conscious_top_down(anne, {}, {});
+	auto[a3, s3] = d.perform_minimal_bottom_up({anne}, {marble_in_table}, {});
 
 	std::cout << "****************************************************************\n" ;
 	std::cout << "**** ACTION 3:  Anne shifts Bottom-up Attention from table ****\n" ;
@@ -496,8 +496,8 @@ int main(int argc, char* argv[])
 
 
 	// Sally shifts top-down attention from basket
-	//auto[a3, s3] = d.perform_ac_top_down_v2(sally, {}, {marble_in_basket});
-	auto[a3, s3] = d.perform_ac_bottom_up_v1({sally}, {}, {marble_in_basket});
+	//auto[a3, s3] = d.peform_conscious_top_down(sally, {}, {marble_in_basket});
+	auto[a3, s3] = d.perform_minimal_bottom_up({sally}, {}, {marble_in_basket});
 	std::cout << "****************************************************************\n" ;
 	std::cout << "**** ACTION 3:  Sally shifts Bottom-Up Attention from basket ****\n" ;
 	std::cout << "****************************************************************\n" ;
@@ -517,7 +517,7 @@ int main(int argc, char* argv[])
 	
 
 	// Sally put marble in basket.
-	auto[a5, s5] = d.perform_ac_bottom_up_v1({sally}, {marble_in_table,marble_in_basket}, {});
+	auto[a5, s5] = d.perform_minimal_bottom_up({sally}, {marble_in_table,marble_in_basket}, {});
 	std::cout << "**************************************************\n" ;
 	std::cout << "**** ACTION 5:  Sally shift Bottom Up Attention to marble in table ****\n" ;
 	std::cout << "**************************************************\n" ;
