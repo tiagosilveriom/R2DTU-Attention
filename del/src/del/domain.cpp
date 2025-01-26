@@ -448,7 +448,7 @@ namespace del {
 	}
 
 // Bottom up attention shift - version 1
-	std::pair<action_id, state_id> domain::perform_ac_bottom_up_v1( std::vector<agent_id> agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del)
+	std::pair<action_id, state_id> domain::perform_minimal_bottom_up( std::vector<agent_id> agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del)
 	{
 
 		size_type num_events= 1;
@@ -493,7 +493,7 @@ namespace del {
 
 // Bottom up attention shift - version 2
 
-	std::pair<action_id, state_id> domain::perform_ac_bottom_up_v2( std::vector<agent_id> agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del)
+	std::pair<action_id, state_id> domain::perform_expanded_bottom_up( std::vector<agent_id> agents_attention_shifter, std::vector<proposition_id> add, std::vector<proposition_id>  del)
 	{
 		//DOUBT: Should exist an argument present_agents? So, only the present ones are updated?
 		// Some events just include some agents' Bottom Up attention shifts (an agent appears on scenario, all other agents are aware that he is paying attention to certain propositions)
@@ -624,7 +624,7 @@ namespace del {
 
 // Top down attention shift - version 1
 
-	std::pair<action_id, state_id> domain::perform_ac_top_down_v1(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del)
+	std::pair<action_id, state_id> domain::perform_private_top_down(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del)
 	{
 
 		size_type num_events= 2;
@@ -806,7 +806,7 @@ namespace del {
 */
 
 // Top Down attention shift - version 2.2
-	std::pair<action_id, state_id> domain::perform_ac_top_down_v2(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del)
+	std::pair<action_id, state_id> domain::perform_conscious_top_down(agent_id i, std::vector<proposition_id> add, std::vector<proposition_id>  del)
 	{
 		action_id ac_action_id = { static_cast<size_type>(this->actions.size()) };
 		
