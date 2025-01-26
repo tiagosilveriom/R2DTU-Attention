@@ -59,3 +59,12 @@ Then when ever a rebuild is needed simply run
 ```
 $ scripts/build
 ```
+This repository is an extension of the work developed by **Thomas Bolander** and **Lasse Dissing**, which is available at [MAvis-DTU/R2DTU](https://github.com/MAvis-DTU/R2DTU). Please note that the linked repository may not be accessible due to privacy restrictions.
+
+The **Dynamic Epistemic Logic (DEL)** implementation used in this project is linked to an external repository, where the implementation is available.
+
+## Repository Structure
+
+This repository contains **two branches**, each corresponding to one of the domains used for the experiments conducted to test this project.
+
+by: **Tiago Silverio s222963**
